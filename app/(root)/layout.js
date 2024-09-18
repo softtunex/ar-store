@@ -1,22 +1,28 @@
-// app/layout.js
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
+import { initializeTheme } from '@/utils/theme'; // Import the utility function
 import "../globals.css";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function RootLayout({ children }) {
+  // Initialize the theme when the layout is loaded
+  if (typeof window !== 'undefined') {
+    initializeTheme();
+  }
+
   return (
-    <html lang="en">
-      <body>
-        <div className="flex h-screen">
-          <Sidebar />
-          <div className="flex flex-col flex-grow">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </div>
-      </body>
-    </html>
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <Sidebar userRole="super_admin" />
+      
+      <div className="flex-grow flex flex-col ml-4">
+        {/* Header */}
+        <Header />
+        
+        {/* Main content area with conditional background */}
+        <main className="flex-grow p-6 mt-4 shadow-sm rounded-lg">
+          {children}
+        </main>
+      </div>
+    </div>
   );
 }

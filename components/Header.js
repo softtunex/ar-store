@@ -1,45 +1,43 @@
-// components/Header.js
-import Link from "next/link";
+import { Badge, Avatar, Button, Dropdown } from "antd";
+import { BellOutlined, SearchOutlined, PlusOutlined } from "@ant-design/icons";
+import DropdownMenu from "@/components/menu/HeaderMenu"; // Import the dropdown menu
 
 export default function Header() {
   return (
-    <header className="bg-gray-900 text-white p-4">
-      <div className="flex justify-between items-center">
-        {/* Logo or App Name */}
-        <div className="text-xl font-bold">
-          <Link href="/dashboard">AR-Store</Link>
+    <header className="w-full p-2 shadow-md flex items-center justify-between">
+      {/* Search Bar */}
+      <div className="flex items-center space-x-2">
+        <div className="relative flex items-center">
+          <SearchOutlined className="absolute left-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search or type a command"
+            className="pl-10 pr-10 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 w-80 bg-gray-100"
+          />
+          <span className="absolute right-3 text-gray-400">⌘ F</span>
         </div>
+      </div>
 
-        {/* Navigation Links */}
-        <nav>
-          <ul className="flex space-x-6">
-            <li>
-              <Link href="/dashboard" className="hover:text-gray-400">
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link href="/products" className="hover:text-gray-400">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/analytics" className="hover:text-gray-400">
-                Analytics
-              </Link>
-            </li>
-            <li>
-              <Link href="/settings" className="hover:text-gray-400">
-                Settings
-              </Link>
-            </li>
-            <li>
-              <Link href="/logout" className="hover:text-gray-400">
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </nav>
+      {/* Right side: Create button, Notifications, and User Avatar */}
+      <div className="flex items-center space-x-6">
+        {/* Create Button */}
+        <Button type="primary" icon={<PlusOutlined />} className="flex items-center space-x-2">
+          Create
+        </Button>
+
+        {/* Notifications */}
+        <Badge count={5} className="cursor-pointer">
+          <BellOutlined className="text-xl" />
+        </Badge>
+
+        {/* User Avatar with Dropdown */}
+        <Dropdown overlay={<DropdownMenu />} trigger={['click']} placement="bottomRight">
+          <Avatar
+            size={40}
+            src="https://randomuser.me/api/portraits/men/32.jpg" // Replace with actual user image URL
+            className="cursor-pointer"
+          />
+        </Dropdown>
       </div>
     </header>
   );
