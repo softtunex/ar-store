@@ -20,7 +20,7 @@ export const sidebarMenu = [
     icon: <BoxPlotOutlined />,
     roles: ["super_admin", "business_owner"],
     subMenu: [
-      { title: "Add Product", url: "/products/add", roles: ["business_owner"] },
+      { title: "Add Product", url: "/products/add", roles: ["super_admin","business_owner"] },
       { title: "Manage Products", url: "/products/manage", roles: ["super_admin","business_owner"] },
     ],
   },
