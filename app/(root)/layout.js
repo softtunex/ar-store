@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       {/* Sidebar */}
       <Sidebar userRole="super_admin" />
       
-      <div className="flex-grow flex flex-col ml-4">
+      <div className="flex-grow flex flex-col ml-[250px] p-8">
         {/* Header */}
         <Header />
         
