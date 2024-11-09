@@ -1,57 +1,62 @@
 // data/sidebarMenu.js
 import {
   HomeOutlined,
-  UserOutlined,
   BoxPlotOutlined,
   BarChartOutlined,
+  UserOutlined,
   SettingOutlined,
-  EyeOutlined,
+  LockOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 
-export const sidebarMenu = [
-  {
-    title: "Dashboard",
-    icon: <HomeOutlined />,
-    url: "/dashboard",
-    roles: [], // Visible to all users
-  },
-  {
-    title: "Products",
-    icon: <BoxPlotOutlined />,
-    roles: ["super_admin", "business_owner"],
-    subMenu: [
-      { title: "Add Product", url: "/products/add", roles: ["super_admin","business_owner"] },
-      { title: "Manage Products", url: "/products/manage", roles: ["super_admin","business_owner"] },
-    ],
-  },
-  {
-    title: "Customers",
-    icon: <UserOutlined />,
-    roles: ["super_admin"],
-    subMenu: [
-      { title: "Customer Overview", url: "/customers/overview", roles: ["super_admin"] },
-      { title: "Customer List", url: "/customers/list", roles: ["super_admin"] },
-    ],
-  },
-  {
-    title: "Analytics",
-    icon: <BarChartOutlined />,
-    roles: ["super_admin", "business_owner"],
-    subMenu: [
-      { title: "Platform Analytics", url: "/analytics/platform", roles: ["super_admin"] },
-      { title: "Product Analytics", url: "/analytics/products", roles: ["business_owner"] },
-    ],
-  },
-  {
-    title: "Settings",
-    icon: <SettingOutlined />,
-    url: "/settings",
-    roles: ["super_admin", "business_owner"],
-  },
-  {
-    title: "Product Engagement Tracking",
-    icon: <EyeOutlined />,
-    url: "/tracking",
-    roles: ["super_admin", "business_owner"],
-  },
-];
+export const sidebarMenu = {
+  general: [
+    {
+      title: "Dashboard",
+      icon: <HomeOutlined />,
+      url: "/dashboard",
+      roles: [], // Visible to all users
+    },
+    {
+      title: "Product Management",
+      icon: <BoxPlotOutlined />,
+      roles: ["super_admin", "business_owner"], // Ensure only allowed roles can view this
+      subMenu: [
+        { title: "Add Product", url: "/products/add", roles: ["super_admin", "business_owner"] },
+        { title: "Manage Products", url: "/products/manage", roles: ["super_admin", "business_owner"] },
+      ],
+    },
+    {
+      title: "Analytics",
+      icon: <BarChartOutlined />,
+      url: "/analytics",
+      roles: ["super_admin", "business_owner"],
+    },
+    {
+      title: "Business Owners",
+      icon: <UserOutlined />,
+      url: "/business-owners",
+      roles: ["super_admin"],
+    },
+  ],
+  support: [
+    {
+      title: "Settings",
+      icon: <SettingOutlined />,
+      url: "/settings",
+      roles: ["super_admin", "business_owner"],
+    },
+    {
+      title: "Security",
+      icon: <LockOutlined />,
+      url: "/security",
+      roles: ["super_admin", "business_owner"],
+    },
+    {
+      title: "Help",
+      icon: <QuestionCircleOutlined />,
+      url: "/help",
+      roles: [],
+    },
+  ],
+};
